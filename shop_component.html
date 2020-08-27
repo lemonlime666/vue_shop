@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./css/shop.css"> -->
+    <link rel="stylesheet" href="./sass/shop.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Shopping</title>
+</head>
+<body>
+    <h1 class="billboard">WELCOME</h1>
+    <div id="pdBox">
+        <pd-card :book="book" :data-num="i"  v-for="(book,i) in books" v-if="i>=a && i<b">
+            <button slot="cartButton" @click="storeItem">ADD TO CART</button>
+        </pd-card>
+        <span class="pageBox">
+            <span class="pageNum" v-for="index in Math.ceil(books.length/5)" @click="changePage(index)">{{index}}</span>
+        </span>
+    </div>
+    
+    <script src="./js/shop_component.js"></script>
+</body>
+</html>

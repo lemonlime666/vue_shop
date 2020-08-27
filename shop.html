@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./css/shop.css"> -->
+    <link rel="stylesheet" href="./sass/shop.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>Shopping</title>
+</head>
+
+<body>
+    <h1 class="billboard">WELCOME</h1>
+    <div id="pdBox">
+        <span class="cartBox"><a href="#">CART({{inCartNum}})</a></span>
+        <div class="pdcard" v-for="book,i in books" v-if="i>=a && i<b">
+            <div class="pdimg"><img :src="book.image" alt=""></div>
+            <div class="pdinfo">
+                <h2>
+                    <a :href="book.url">{{book.title}}</a>
+                    <p>{{book.author}}</p>
+                </h2>
+                <button class="cutBtn" @click="if(book.count>1){book.count--}">-</button>
+                <span class="span1">{{book.count}}</span>
+                <button class="addBtn" @click="book.count++">+</button>
+                <span class="span2">
+                    <p>{{book.price * book.count}}</p>
+                    <button @click="store" :data-num="i">ADD TO CART</button>
+                </span>
+            </div>
+        </div>
+        <span class="pageBox">
+            <span class="pageNum" v-for="index in Math.ceil(books.length/5)" @click="changePage(index)">{{index}}</span>
+        </span>
+    </div>
+
+    <script src="./js/shop.js"></script>
+</body>
+
+</html>
